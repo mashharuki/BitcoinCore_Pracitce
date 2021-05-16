@@ -1,0 +1,71 @@
+# ビットコインクライアント起動用のコマンド
+bitcoind
+bitcoind -daemon
+
+# bitcoind.confに記載するためのユーザー名とパスワードの例(本番では使用しない)
+rpcuser=haruki
+rpcpassword=haruki
+
+＃ bitcoinCore JSON-PRC APIを利用するためのコマンド
+bitcoin-cli (help)
+
+# ビットコインクライアントの状態を取得するためのコマンド
+bitcoin-cli getinfo
+
+# ウォレットのセットアップ用コマンド(暗号化)
+bitcoin-cli encrptwallet test
+
+# ウォレットのロックを解除するためのコマンド(ロック解除)
+bitcoin-cli walletpassphrase test 360
+
+# ウォレットのバックアップ作成
+bitcoin-cli backupwallet wallet.backup
+
+# ウォレットのバックアップリストア
+bitcoin-cli importwallet wallet.backup
+
+# アドレス生成コマンド
+bitcoin-cli getnewaddress
+
+# ビットコインが届いたかどうかを確認するコマンド
+bitcoin-cli getreceivedbyaddress "任意のアドレス" "承認回数"
+
+# ビットコインアドレスに送られたトランザクションを確認するコマンド
+bitcoin-cli listtransaction
+
+# アドレス一覧表示用のコマンド
+bitcoin-cli getaddressbyaccount ""
+
+# ウォレット残高表示のコマンド
+bitcoin-cli getbalance
+
+# トランザクション探索用のコマンド
+bitcoin-cli gettransaction "任意のトランザクションハッシュ値"
+
+# トランザクション探索用(16進数版)
+bitcoin-cli getrawtransaction "任意のトランザクションハッシュ値"
+
+# トランザクションデコード用
+bitcoin-cli decoderawtransaction "16進数のトランザクションデータ"
+
+# ブロックデータを取得するコマンド
+bitcoin-cli getblock "任意のブロックハッシュ"
+
+# ブロック高からブロックハッシュを取得するコマンド(ここでは0番目)
+bitcoin-cli getblockhash 0
+
+# ブロックハッシュからブロック情報を取得するコマンド
+bitcoin-cli getblock 00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09
+
+# ウォレットに存在する未使用承認済みトランザクションを表示するコマンド
+bitcoin-cli listunspent
+
+# 未使用アウトプットの詳細を取得するコマンド
+bitcoin-cli getuxout "txid" "vout"
+
+# トランザクションデータ生成コマンド(Script Sigは、まだ空(未署名なので))
+bitcoin-cli createrawtransaction '[{"txid": "任意のインプットトランザクションハッシュ値", "vout": "任意の番号"}]' '{"送り先のアドレス": "手数料", "自分のアドレス": "お釣り"}'
+
+# トランザクションに署名するためのコマンド
+bitcoin-cli signrawtransaction "使用したい未使用アウトプットトランザクションの16進数テキスト"
+
