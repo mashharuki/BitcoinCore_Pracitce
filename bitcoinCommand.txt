@@ -69,3 +69,19 @@ bitcoin-cli createrawtransaction '[{"txid": "任意のインプットトラン�
 # トランザクションに署名するためのコマンド
 bitcoin-cli signrawtransaction "使用したい未使用アウトプットトランザクションの16進数テキスト"
 
+# 秘密鍵を生成して表示するコマンド (WIF: wallet import format)
+bx seed | bx ec-new | bx ec-to-wif
+
+#  16進数へのデコード　
+bx base58check-decode　"base58のアドレス"
+
+bx base58check-decode　"base58のアドレス" --version 128
+
+# ピアの情報を取得するコマンド
+bitcoin-cli getpeerinfo
+
+# genesisブロックを取得するURL(エンドポイントAPI)
+https://chainflyer.bitflyer.com/v1/block/height/0
+
+
+

@@ -1,0 +1,22 @@
+2 7 0P_ADD 3 OP_SUB 1 OP_ADD 7 OP_EQUAL
+
+# unlocking scriptは「2」
+3 OP_ADD 5 OP_EQUAL
+
+# unlocking script と locking scriptを繋げてScriptを作成する。
+2 3 OP_ADD 5 OP_EQUAL
+
+# Cafe Public Key Hash (ビットコインアドレス)
+<Cafe Siginature> <Cafe Public Key> OP_DUP OP_HASH160 <Cafe Public Key Hash> OP_EQUAL OP_CHECKSIG
+
+# 公開鍵と署名を一致する。
+<Siginature from Private Key A> <Public Key A> OP_CHECKSIG
+
+# マルチシグ(locking script)
+2 <Public Key A> <Public Key B> <Public Key C> 3 OP_CHECKMYLITISIG
+
+# マルチシグ(unlocking script)
+OP_0 <Siginature B> <Siginature C>
+
+OP_0 <Siginature B> <Siginature C> 2 <Public Key A> <Public Key B> <Public Key C> 3 OP_CHECKMYLITISIG
+
